@@ -37,10 +37,16 @@ def main():
         #pygame.draw.rect(sc, (255, 255, 255), (20, 20, 100, 75))
         #pygame.draw.rect(sc, (64, 128, 255), (150, 20, 100, 75), 8)
         pygame.draw.circle(sc, ORANGE, (x, y), r)
-        if (x >= WIN_WIDTH + r) and (f_r == True):
-            x += 10
-        elif (x = WIN_WIDTH + r) and (f_r == True):
-            x += 2  # в следующем кадре круг сместится
+        if (x <= WIN_WIDTH + r) and (f_r == True):
+            x += 4
+        else:
+            f_r = False
+            f_l = True
+        if (x >= 0) and (f_l == True):
+            x -= 4
+        else:
+            f_r = True
+            f_l = False
         # --------
  
         # обновление экрана
