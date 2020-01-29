@@ -1,5 +1,6 @@
 # здесь подключаются модули
 import pygame
+import random
 from pygame.locals import *
 import sys
 
@@ -16,12 +17,12 @@ def main():
     
     FPS = 60
     BLACK = (0, 0, 0)
-    ORANGE = (255, 150, 100)
+    RED = (255, 0, 0)
+    GREEN = (0, 255, 0)
     x = 10
     y = 50
     r = 10
-    f_l = False
-    f_r = False
+    rTank = 30
     # если надо до цикла отобразить объекты на экране (уберите решотку ниже)
     #pygame.display.update()
     while True:
@@ -36,17 +37,15 @@ def main():
         # изменение объектов и многое др.
         #pygame.draw.rect(sc, (255, 255, 255), (20, 20, 100, 75))
         #pygame.draw.rect(sc, (64, 128, 255), (150, 20, 100, 75), 8)
-        pygame.draw.circle(sc, ORANGE, (x, y), r)
-        if (x <= WIN_WIDTH + r) and (f_r == True):
+        pygame.draw.circle(sc, GREEN, (WIN_WIDTH // 2, WIN_HEIGHT), rTank)
+
+        #----Движение шарика в доль оси х----
+        pygame.draw.circle(sc, RED, (x, y), r)
+        if (x <= WIN_WIDTH + r):
             x += 4
         else:
-            f_r = False
-            f_l = True
-        if (x >= 0) and (f_l == True):
-            x -= 4
-        else:
-            f_r = True
-            f_l = False
+            x = 0
+            y = random.randint(10, 200)
         # --------
  
         # обновление экрана
